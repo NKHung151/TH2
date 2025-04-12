@@ -24,23 +24,17 @@
 
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import models from "../../modelData/models"; // Import models to fetch user photos data
-import { Typography, Divider } from "@mui/material"; // Import Material-UI components
-import "./styles.css"; // Import CSS file for styling
+import models from "../../modelData/models"; 
+import { Typography, Divider } from "@mui/material"; 
+import "./styles.css"; 
 
-/**
- * Define UserPhotos, a React component of Project 4.
- */
 function UserPhotos() {
-  const { userId } = useParams(); // Get userId from the URL
-  const photos = models.photoOfUserModel(userId) || []; // Fetch user photos, avoid errors if no photos
-
-  // Function to format date
-  // Function to format date in English
+  const { userId } = useParams();
+  const photos = models.photoOfUserModel(userId) || [];
   const formatDate = (date) => {
     const options = {
       year: "numeric",
-      month: "long", // e.g., January, February
+      month: "long", 
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
@@ -51,12 +45,12 @@ function UserPhotos() {
 
   return (
     <div className="user-photos">
-      {/* Title for the user's photo page */}
+     
       <Typography variant="h4" gutterBottom>
         Photos of the User
       </Typography>
 
-      {/* If no photos are available */}
+      
       {photos.length === 0 ? (
         <Typography variant="body1">
           No photos available for this user.
@@ -70,7 +64,7 @@ function UserPhotos() {
               alt="User Photo"
               style={{ width: "300px", borderRadius: "8px" }}
             />
-            {/* Display photo creation date */}
+            
             <Typography variant="body1">
               Created on: {formatDate(photo.date_time)}
             </Typography>
